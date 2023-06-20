@@ -1,6 +1,7 @@
 package ru.digital.chief.shop.model.dto;
 
-import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,12 +9,11 @@ import java.math.BigDecimal;
 /**
  * A DTO for the {@link ru.digital.chief.shop.model.domain.Product} entity
  */
-@Data
-public class ProductDto implements Serializable {
-    private final Long id;
-    private final String name;
-    private final BigDecimal price;
-    private final Long quantity;
-    private final String brand;
-    private final String category;
+
+public record ProductDto(@Positive Long id,
+                         @NotBlank String name,
+                         @Positive BigDecimal price,
+                         @Positive Long quantity,
+                         @NotBlank String brand,
+                         String category) implements Serializable {
 }

@@ -23,7 +23,7 @@ public class Shop {
     private String phone;
     private String category;
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany(mappedBy = "shop", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @ToString.Exclude
     private List<Product> products = new java.util.ArrayList<>();
 
