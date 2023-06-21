@@ -16,12 +16,12 @@ import java.util.Objects;
  */
 @Data
 public class ShopDto {
-    private final @Positive Long id;
-    private final @NotBlank String name;
-    private final @Pattern(regexp = "%d%d-%d%d") String workingHours;
-    private final @Pattern(regexp = "") String phone;
-    private final String category;
-    private final List<ProductDto> products;
+    private @Positive Long id;
+    private @NotBlank String name;
+    private @Pattern(regexp = "%d%d-%d%d") String workingHours;
+    private @Pattern(regexp = "") String phone;
+    private String category;
+    private List<ProductDto> products;
 
 
 }

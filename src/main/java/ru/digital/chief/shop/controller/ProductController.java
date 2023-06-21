@@ -11,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.digital.chief.shop.exception.ServiceException;
 import ru.digital.chief.shop.model.dto.ProductDto;
-import ru.digital.chief.shop.service.ProductService;
+import ru.digital.chief.shop.service.impl.ProductService;
 import ru.digital.chief.shop.validation.UpdateValidation;
 
 import java.util.List;
@@ -37,8 +37,7 @@ public class ProductController {
     @GetMapping
     public List<ProductDto> getProducts(
             @RequestParam(name = "page", required = false, defaultValue = "1") @Positive int page,
-            @RequestParam(name = "size", required = false, defaultValue = "10") @Positive int size)
-            throws ServiceException {
+            @RequestParam(name = "size", required = false, defaultValue = "10") @Positive int size) {
         return service.findPage(page, size);
 
     }
