@@ -1,7 +1,6 @@
 package ru.digital.chief.shop.controller;
 
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.groups.Default;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import ru.digital.chief.shop.exception.ServiceException;
 import ru.digital.chief.shop.model.dto.ProductDto;
 import ru.digital.chief.shop.service.impl.ProductService;
-import ru.digital.chief.shop.validation.UpdateValidation;
+import ru.digital.chief.shop.validation.ProductCreateValidation;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
 @Validated
-
 public class ProductController {
     private final ProductService service;
 
@@ -44,7 +42,9 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductDto createProduct(@RequestBody @Valid ProductDto productDto) throws ServiceException {
+    public ProductDto createProduct(@RequestBody @Validated({ProductCreateValidation.class, Default.class})
+                                        ProductDto productDto) throws ServiceException {
+        productDto.setId(null);
         return service.create(productDto);
     }
 
@@ -58,7 +58,7 @@ public class ProductController {
 
     @PatchMapping("/{id}")
     public ProductDto updateProductById(@PathVariable("id") @Positive long id,
-                             @RequestBody @Validated({UpdateValidation.class, Default.class})
+                             @RequestBody @Validated
                              ProductDto productDto)
             throws ServiceException {
         productDto.setId(id);

@@ -1,4 +1,4 @@
 package ru.digital.chief.shop.validation;
 
-public interface CreateValidation {
+public interface ProductCreateValidation {
 }

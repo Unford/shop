@@ -1,6 +1,5 @@
 package ru.digital.chief.shop.controller;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.groups.Default;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.digital.chief.shop.exception.ServiceException;
 import ru.digital.chief.shop.model.dto.ShopDto;
 import ru.digital.chief.shop.service.impl.ShopService;
-import ru.digital.chief.shop.validation.UpdateValidation;
+import ru.digital.chief.shop.validation.ShopCreateValidation;
+import ru.digital.chief.shop.validation.ShopUpdateValidation;
 
 import java.util.List;
 
@@ -41,7 +41,9 @@ public class ShopController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ShopDto createShop(@RequestBody @Valid ShopDto shopDto) throws ServiceException {
+    public ShopDto createShop(@RequestBody
+                              @Validated({ShopCreateValidation.class, Default.class})
+                              ShopDto shopDto) throws ServiceException {
         return service.create(shopDto);
     }
 
@@ -55,8 +57,8 @@ public class ShopController {
 
     @PatchMapping("/{id}")
     public ShopDto updateShopById(@PathVariable("id") @Positive long id,
-                                        @RequestBody @Validated({UpdateValidation.class, Default.class})
-                                        ShopDto shopDto)
+                                  @RequestBody @Validated({ShopUpdateValidation.class})
+                                  ShopDto shopDto)
             throws ServiceException {
         shopDto.setId(id);
         return service.update(shopDto);

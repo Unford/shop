@@ -1,27 +1,32 @@
 package ru.digital.chief.shop.model.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
 import ru.digital.chief.shop.model.domain.Shop;
+import ru.digital.chief.shop.validation.ProductCreateValidation;
+import ru.digital.chief.shop.validation.ShopCreateValidation;
+import ru.digital.chief.shop.validation.NullOrNotBlank;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A DTO for the {@link Shop} entity
  */
 @Data
+@Builder
 public class ShopDto {
-    private @Positive Long id;
-    private @NotBlank String name;
-    private @Pattern(regexp = "%d%d-%d%d") String workingHours;
-    private @Pattern(regexp = "") String phone;
-    private String category;
-    private List<ProductDto> products;
+    private @Positive @NotNull(groups = ProductCreateValidation.class) Long id;
+    private @NotBlank(groups = {ShopCreateValidation.class})
+    @Size(min = 3, max = 255) String name;
+    private @Pattern(regexp = "\\d\\d-\\d\\d") @NotNull(groups = {ShopCreateValidation.class}) String workingHours;
+    private @NotNull(groups = {ShopCreateValidation.class})
+    @Pattern(regexp = "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$")
+    String phone;
+    private @NullOrNotBlank
+    @Size(min = 3, max = 255) String category;
+    private List<@Valid ProductDto> products;
 
 
 }

@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.digital.chief.shop.exception.CustomErrorCode;
 import ru.digital.chief.shop.exception.ServiceException;
 import ru.digital.chief.shop.model.domain.Product;
@@ -42,20 +43,26 @@ public class ProductService implements BasicService<ProductDto> {
 
     @Override
     public List<ProductDto> findPage(int page, int size) {
-        Page<Product> productPage = productRepository.findAll(PageRequest.of(page, size));
+        Page<Product> productPage = productRepository.findAll(PageRequest.of(page - 1, size));
         return productPage.getContent().stream()
                 .map(product -> modelMapper.map(product, ProductDto.class)).toList();
 
     }
 
     @Override
-    public ProductDto create(ProductDto productDto) {
-        Product newProduct = productRepository.save(modelMapper.map(productDto, Product.class));
+    public ProductDto create(ProductDto productDto) throws ServiceException {
+        Shop shop = shopRepository.findById(productDto.getShop().getId())
+                .orElseThrow(() -> new ServiceException(Long.toString(productDto.getShop().getId()),
+                        CustomErrorCode.RESOURCE_NOT_FOUND));
+        Product product = modelMapper.map(productDto, Product.class);
+        product.setShop(shop);
+        Product newProduct = productRepository.save(product);
         modelMapper.map(newProduct, productDto);
         return productDto;
     }
 
     @Override
+    @Transactional
     public ProductDto update(ProductDto productDto) throws ServiceException {
         Product product = productRepository.findById(productDto.getId())
                 .orElseThrow(() -> new ServiceException(Long.toString(productDto.getId()),
