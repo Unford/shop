@@ -40,3 +40,5 @@
 - ***com.mysql:mysql-connector-j*** - предоставляет драйвер JDBC для работы с базой данных MySQL.
 - ***org.springframework.boot:spring-boot-starter-test*** - включает необходимые компоненты для написания и запуска модульных и интеграционных тестов в Spring Boot приложении.
 
+Инструкция:
+В папке ресурсы находятся [Файл коллекции Postman](src/main/resources/Digital chief.postman_collection.json) и [файл SQL](src/main/resources/init.sql)
