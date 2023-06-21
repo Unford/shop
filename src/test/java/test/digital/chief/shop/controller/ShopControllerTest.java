@@ -50,22 +50,23 @@ class ShopControllerTest {
         for (int i = 1; i <= 3; i++) {
             List<ProductDto> productDtos = new ArrayList<>();
             for (int j = i; j > 0; j--) {
-                ProductDto productDto = ProductDto.builder()
-                        .id(1L)
-                        .name("name " + i)
-                        .brand("brand " + i)
-                        .quantity(Integer.toUnsignedLong(i))
-                        .price(BigDecimal.valueOf(i))
-                        .category("category" + i).build();
+                ProductDto productDto = new ProductDto();
+                productDto.setId(1L);
+                productDto.setName("name " + i);
+                productDto.setBrand("brand " + i);
+                productDto.setQuantity(Integer.toUnsignedLong(i));
+                productDto.setPrice(BigDecimal.valueOf(i));
+                productDto.setCategory("category" + i);
                 productDtos.add(productDto);
             }
-            shops.add(ShopDto.builder()
-                    .name("name " + i)
-                    .category("category" + i)
-                    .workingHours("01-1" + i)
-                    .phone("123123124" + i)
-                    .products(productDtos)
-                    .build());
+            ShopDto shopDto = new ShopDto();
+            shopDto.setName("name " + i);
+            shopDto.setCategory("category" + i);
+            shopDto.setWorkingHours("01-1" + i);
+            shopDto.setPhone("123123124" + i);
+            shopDto.setProducts(productDtos);
+
+            shops.add(shopDto);
         }
 
     }

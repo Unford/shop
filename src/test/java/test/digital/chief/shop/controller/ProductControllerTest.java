@@ -48,18 +48,16 @@ class ProductControllerTest {
     public void setUp() {
         products = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
-            ProductDto productDto = ProductDto.builder()
-                    .id(1L)
-                    .name("name " + i)
-                    .brand("brand " + i)
-                    .quantity(Integer.toUnsignedLong(i))
-                    .price(BigDecimal.valueOf(i))
-                    .category("category" + i)
-                    .shop(ShopDto.builder()
-                            .id(Integer.toUnsignedLong(i + 1))
-                            .name("shop name " + i)
-                            .build())
-                    .build();
+            ProductDto productDto = new ProductDto();
+            productDto.setId(1L);
+            productDto.setName("name " + i);
+            productDto.setBrand("brand " + i);
+            productDto.setQuantity(Integer.toUnsignedLong(i));
+            productDto.setPrice(BigDecimal.valueOf(i));
+            productDto.setCategory("category" + i);
+            ShopDto shopDto = new ShopDto();
+            shopDto.setId(Integer.toUnsignedLong(i));
+            productDto.setShop(shopDto);
             products.add(productDto);
         }
     }

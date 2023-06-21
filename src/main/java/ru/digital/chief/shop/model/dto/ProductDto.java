@@ -3,6 +3,7 @@ package ru.digital.chief.shop.model.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import ru.digital.chief.shop.model.domain.Product;
@@ -18,7 +19,6 @@ import java.math.BigDecimal;
  */
 
 @Data
-@Builder
 public class ProductDto {
 
     private @Positive @NotNull(groups = {ShopUpdateValidation.class}) Long id;

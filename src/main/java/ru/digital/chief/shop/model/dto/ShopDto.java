@@ -5,9 +5,9 @@ import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 import ru.digital.chief.shop.model.domain.Shop;
+import ru.digital.chief.shop.validation.NullOrNotBlank;
 import ru.digital.chief.shop.validation.ProductCreateValidation;
 import ru.digital.chief.shop.validation.ShopCreateValidation;
-import ru.digital.chief.shop.validation.NullOrNotBlank;
 
 import java.util.List;
 
@@ -15,7 +15,6 @@ import java.util.List;
  * A DTO for the {@link Shop} entity
  */
 @Data
-@Builder
 public class ShopDto {
     private @Positive @NotNull(groups = ProductCreateValidation.class) Long id;
     private @NotBlank(groups = {ShopCreateValidation.class})
