@@ -1,4 +1,4 @@
-package test.digital.chief.shop.service;
+package test.digital.chief.shop.controller;
 
 
 import com.fasterxml.jackson.databind.MapperFeature;
