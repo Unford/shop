@@ -2,7 +2,6 @@ package ru.digital.chief.shop.model.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import lombok.Builder;
 import lombok.Data;
 import ru.digital.chief.shop.model.domain.Shop;
 import ru.digital.chief.shop.validation.NullOrNotBlank;
@@ -25,6 +24,8 @@ public class ShopDto {
     String phone;
     private @NullOrNotBlank
     @Size(min = 3, max = 255) String category;
+    private @NullOrNotBlank
+    @Size(min = 3, max = 255) String email;
     private List<@Valid ProductDto> products;
 
 

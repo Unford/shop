@@ -21,6 +21,8 @@ public class Shop {
 
     private String workingHours;
     private String phone;
+    private String email;
+
     private String category;
 
     @OneToMany(mappedBy = "shop", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
