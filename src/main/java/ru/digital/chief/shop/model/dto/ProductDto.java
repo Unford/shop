@@ -24,12 +24,15 @@ public class ProductDto {
     private @Positive @NotNull(groups = {ShopUpdateValidation.class}) Long id;
     private @NotBlank(groups = {ProductCreateValidation.class,
             ShopCreateValidation.class}) @Size(min = 3, max = 255) String name;
-    private @Positive @NotNull(groups = {ProductCreateValidation.class}) BigDecimal price;
-    private @Positive @NotNull(groups = {ProductCreateValidation.class}) Long quantity;
-    private @NotBlank(groups = {ProductCreateValidation.class}) @Size(min = 3, max = 255) String brand;
+    private @Positive @NotNull(groups = {ProductCreateValidation.class ,
+            ShopCreateValidation.class}) BigDecimal price;
+    private @Positive @NotNull(groups = {ProductCreateValidation.class,
+            ShopCreateValidation.class}) Long quantity;
+    private @NotBlank(groups = {ProductCreateValidation.class,
+            ShopCreateValidation.class}) @Size(min = 3, max = 255) String brand;
     private @NullOrNotBlank @Size(min = 3, max = 255) String category;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private @NotNull(groups = ProductCreateValidation.class) @Valid ShopDto shop;
+    private @NotNull(groups = {ProductCreateValidation.class}) @Valid ShopDto shop;
 
 
 }

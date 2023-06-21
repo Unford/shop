@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "439ceb13-81bc-4db7-9e7b-510093ddb0f5",
+		"name": "Digital chief",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20492650"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Продукт 13\",\n    \"price\": 14.21,\n    \"quantity\": 14,\n    \"brand\": \"Бренд 13\",\n    \"category\": \"Категория 13\",\n    \"shop\": {\n        \"id\": 9\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find product by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find products page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products?size=2&page=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Продукт 132\",\n    \"price\": 1323.22,\n    \"quantity\": 93,\n    \"brand\": \"обновленный бренд\",\n    \"category\": \"обновленная категория\",\n    \"shop\": {\n        \"id\": 5\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Create shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"магазин 13\",\n    \"workingHours\": \"12-24\",\n    \"phone\": \"11-97-995\",\n    \"category\": \"Категория 2\",\n    \"email\": \"email13@gmail.com\",\n    \"products\": [\n        {\n            \"name\": \"Продукт 14\",\n            \"price\": 23.22,\n            \"quantity\": 2,\n            \"brand\": \"Бренд 1\",\n            \"category\": \"Категория 2\"\n        },\n        {\n            \"name\": \"Продукт 15\",\n            \"price\": 13.22,\n            \"quantity\": 2,\n            \"brand\": \"Бренд 2\",\n            \"category\": \"Категория 32\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shops",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Shop by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shops/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shops",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find shops page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shops?size=3&page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shops"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete shop by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shops/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shops",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update shop",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"магазин 999\",\n    \"workingHours\": \"02-14\",\n    \"phone\": \"12-97-135\",\n    \"category\": \"Обновленная категория\",\n    \"email\": \"updatedEmail@mail.com\",\n    \"products\": [\n        {\n            \"id\": 10\n        },\n        {\n            \"id\": 3\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shops/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shops",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
