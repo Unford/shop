@@ -3,16 +3,15 @@ package ru.digital.chief.shop.exception;
 import org.springframework.http.HttpStatus;
 
 public enum CustomErrorCode {
-    RESOURCE_NOT_FOUND(40401, "exception.resource.not.found.message", HttpStatus.NOT_FOUND),
-    HANDLER_NOT_FOUND(40402, "exception.handler.not.found.message", HttpStatus.NOT_FOUND),
+    RESOURCE_NOT_FOUND(40401, "Requested resource not found (%s)", HttpStatus.NOT_FOUND),
+    HANDLER_NOT_FOUND(40402, "Handler %s not found", HttpStatus.NOT_FOUND),
     CONSTRAINT_VIOLATION(40000, HttpStatus.BAD_REQUEST),
-    TYPE_MISMATCH(40001, "exception.type.mismatch.message", HttpStatus.BAD_REQUEST),
-    METHOD_NOT_SUPPORTED(40505, "exception.method.not.allowed.message", HttpStatus.METHOD_NOT_ALLOWED),
-    CONFLICT_DELETE(40300, "exception.conflict.delete.operation.message", HttpStatus.CONFLICT),
-    RESOURCE_ALREADY_EXIST(40909, "exception.resource.already.exist.message", HttpStatus.CONFLICT),
-    INTERNAL_EXCEPTION(50000, "exception.internal.server.message", HttpStatus.INTERNAL_SERVER_ERROR),
-    MESSAGE_NOT_READABLE(40001, "exception.message.not.readable.message", HttpStatus.BAD_REQUEST);
-    //todo
+    TYPE_MISMATCH(40001, "Failed to convert value %s to %s", HttpStatus.BAD_REQUEST),
+    METHOD_NOT_SUPPORTED(40505, "Request method %s not supported", HttpStatus.METHOD_NOT_ALLOWED),
+    CONFLICT_DELETE(40300, "Resource can not be deleted (%s)", HttpStatus.CONFLICT),
+    RESOURCE_ALREADY_EXIST(40909, "Resource already exist (%s)", HttpStatus.CONFLICT),
+    INTERNAL_EXCEPTION(50000, "Something goes wrong", HttpStatus.INTERNAL_SERVER_ERROR),
+    MESSAGE_NOT_READABLE(40001, "Failed to parse value to JSON", HttpStatus.BAD_REQUEST);
     private final int code;
     private final HttpStatus httpStatus;
     private final String message;

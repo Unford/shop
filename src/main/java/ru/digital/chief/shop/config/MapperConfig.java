@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 
-/**
- * The ModelMapper configuration class contain a bean that is used to map between objects
- */
+
 @Configuration
 public class MapperConfig {
 
