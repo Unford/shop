@@ -41,4 +41,6 @@
 - ***org.springframework.boot:spring-boot-starter-test*** - включает необходимые компоненты для написания и запуска модульных и интеграционных тестов в Spring Boot приложении.
 
 Инструкция:
-В папке ресурсы находятся [Файл коллекции Postman](src/main/resources/Digital chief.postman_collection.json) и [файл SQL](src/main/resources/init.sql)
+В папке ресурсы находятся [Файл коллекции Postman](src/main/resources/Digital_chief.postman_collection.json) и [файл SQL](src/main/resources/init.sql).
+1) Импортируйте коллекцию Postman и вставьте тестовые данные из SQL
+2) Можно запустить из под IDE, или выбрать build таск и в папке Lib найти
