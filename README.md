@@ -42,5 +42,6 @@
 
 Инструкция:
 В папке ресурсы находятся [Файл коллекции Postman](src/main/resources/Digital_chief.postman_collection.json) и [файл SQL](src/main/resources/init.sql).
-1) Импортируйте коллекцию Postman и вставьте тестовые данные из SQL
-2) Можно запустить из под IDE, или выбрать build таск и в папке Lib найти
+1) Поменять [Параметры приложения](src/main/resources/application.properties) под свое БД.s
+2) Можно запустить из под IDE, или выбрать build task в gradle и в папке Lib найти "shop-0.0.1-SNAPSHOT.jar" и запустить с помощью команды "java -jar -Dspring.profiles.active=dev shop-0.0.1-SNAPSHOT.jar", где dev это профиль можно еще prod. dev сгенерирует бд и таблицы.
+3) Импортируйте коллекцию Postman и вставьте тестовые данные из SQL.
